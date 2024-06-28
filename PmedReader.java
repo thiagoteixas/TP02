@@ -61,19 +61,29 @@ public class PmedReader {
                     System.out.println("Processing file: " + filename);
                     System.out.println("k: " + k);
 
-                    // Solve using the exact algorithm with a time limit
+                    // Measure time for exact algorithm
                     ExactKCenter exactSolver = new ExactKCenter(distances, k);
+                    long startExactTime = System.currentTimeMillis();
                     int[] exactCenters = exactSolver.solve(5000); // Time limit: 5000 milliseconds (5 seconds)
+                    long endExactTime = System.currentTimeMillis();
+                    long exactDuration = endExactTime - startExactTime;
+
                     if (exactCenters[0] == -1) {
                         System.out.println("Exact solution did not finish within the time limit.");
                     } else {
                         System.out.println("Exact centers: " + Arrays.toString(exactCenters));
                     }
+                    System.out.println("Exact algorithm execution time: " + exactDuration + " milliseconds");
 
-                    // Solve using the approximate algorithm
+                    // Measure time for approximate algorithm
                     ApproximateKCenter approximateSolver = new ApproximateKCenter(distances, k);
+                    long startApproximateTime = System.currentTimeMillis();
                     int[] approximateCenters = approximateSolver.solve();
+                    long endApproximateTime = System.currentTimeMillis();
+                    long approximateDuration = endApproximateTime - startApproximateTime;
+
                     System.out.println("Approximate centers: " + Arrays.toString(approximateCenters));
+                    System.out.println("Approximate algorithm execution time: " + approximateDuration + " milliseconds");
 
                     results.add("File: " + filename + ", Exact Centers: " + Arrays.toString(exactCenters) + ", Approximate Centers: " + Arrays.toString(approximateCenters));
 
