@@ -27,7 +27,7 @@ public class ExactKCenter {
       if (solverThread.isAlive()) {
         solverThread.interrupt();
         solverThread.join();
-        // Indicar que não concluiu dentro do tempo limite
+        // Indicate that it did not complete within the time limit
         return new int[] { -1 };
       }
     } catch (InterruptedException e) {

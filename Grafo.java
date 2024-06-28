@@ -22,7 +22,7 @@ public class Grafo {
     return V;
   }
 
-  // Método Exato para resolver o problema dos k-centros
+  // Exact method to solve the k-center problem
   public Set<Integer> kCentrosExato(int k) {
     Set<Integer> centros = new HashSet<>();
     List<Integer> vertices = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Grafo {
     return centros;
   }
 
-  // Função para gerar todas as combinações de k elementos de uma lista
+  // Function to generate all combinations of k elements from a list
   private <T> Set<Set<T>> combinations(List<T> list, int k) {
     Set<Set<T>> result = new HashSet<>();
     combinationsHelper(list, k, 0, new HashSet<T>(), result);

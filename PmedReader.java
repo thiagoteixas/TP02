@@ -38,7 +38,7 @@ public class PmedReader {
             }
         }
 
-        return new Object[]{distances, k};
+        return new Object[] { distances, k };
     }
 
     public static void main(String[] args) throws IOException {
@@ -61,7 +61,7 @@ public class PmedReader {
                     System.out.println("Processing file: " + filename);
                     System.out.println("k: " + k);
 
-                    // Measure time for exact algorithm
+                    // Measure time for ExactKCenter algorithm
                     ExactKCenter exactSolver = new ExactKCenter(distances, k);
                     long startExactTime = System.currentTimeMillis();
                     int[] exactCenters = exactSolver.solve(5000); // Time limit: 5000 milliseconds (5 seconds)
@@ -75,7 +75,7 @@ public class PmedReader {
                     }
                     System.out.println("Exact algorithm execution time: " + exactDuration + " milliseconds");
 
-                    // Measure time for approximate algorithm
+                    // Measure time for ApproximateKCenter algorithm
                     ApproximateKCenter approximateSolver = new ApproximateKCenter(distances, k);
                     long startApproximateTime = System.currentTimeMillis();
                     int[] approximateCenters = approximateSolver.solve();
@@ -83,9 +83,11 @@ public class PmedReader {
                     long approximateDuration = endApproximateTime - startApproximateTime;
 
                     System.out.println("Approximate centers: " + Arrays.toString(approximateCenters));
-                    System.out.println("Approximate algorithm execution time: " + approximateDuration + " milliseconds");
+                    System.out
+                            .println("Approximate algorithm execution time: " + approximateDuration + " milliseconds");
 
-                    results.add("File: " + filename + ", Exact Centers: " + Arrays.toString(exactCenters) + ", Approximate Centers: " + Arrays.toString(approximateCenters));
+                    results.add("File: " + filename + ", Exact Centers: " + Arrays.toString(exactCenters)
+                            + ", Approximate Centers: " + Arrays.toString(approximateCenters));
 
                     // Visualize the graph for every 5th file to reduce memory usage
                     if (fileCounter % 5 == 0) {
