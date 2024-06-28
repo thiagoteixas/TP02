@@ -64,7 +64,7 @@ public class PmedReader {
                     // Measure time for ExactKCenter algorithm
                     ExactKCenter exactSolver = new ExactKCenter(distances, k);
                     long startExactTime = System.currentTimeMillis();
-                    int[] exactCenters = exactSolver.solve(5000); // Time limit: 5000 milliseconds (5 seconds)
+                    int[] exactCenters = exactSolver.solve(10000); // Time limit: 5000 milliseconds (5 seconds)
                     long endExactTime = System.currentTimeMillis();
                     long exactDuration = endExactTime - startExactTime;
 
@@ -82,7 +82,7 @@ public class PmedReader {
                     long endApproximateTime = System.currentTimeMillis();
                     long approximateDuration = endApproximateTime - startApproximateTime;
 
-                    System.out.println("Approximate centers: " + Arrays.toString(approximateCenters));
+                    /* System.out.println("Approximate centers: " + Arrays.toString(approximateCenters)); */
                     System.out
                             .println("Approximate algorithm execution time: " + approximateDuration + " milliseconds");
 
